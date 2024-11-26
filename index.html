@@ -4,15 +4,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="refresh" content="3">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
     <link rel="stylesheet" href="sources/css/style.css">
     <title>FUT Champions Web App Ultimate Team</title>
 </head>
 <body>
+    <!-------- Field for Formation ----->
     <div class="container">
+        <h1>FORMATION</h1>
         <img src="/image/background field.png" alt="Football Field" class="background-image">
     </div>
+    <!---- Format Ajout Players and Tactics Formation-->
     <div class="form-Ajout">
-  jjjjjjjjjjjjjjjjjjjjjjjjj
+        <div class="head-formatajout">
+            <h1>Tactics Formation</h1>
+            <nav>
+              <button class="filtbtn" data-filter="tactics">Add Player</button>
+              <button class="filtbtn" data-filter="formations">Formations</button>
+              <button class="filtbtn" data-filter="players">Players</button>
+            
+            </nav>
+          </div>
+
+          <main id="content">
+            <section class="page" id="tactics" style="display: none;">
+              <p>Customize your team's tactics here.</p>
+            </section>
+      
+            <section class="page" id="formations">
+              <div class="formations-grid">
+                <div class="formation"><img src="/image/4-3-3.jpeg" alt=""><h3>4 - 3 - 3</h3>
+                    </div>
+                <div class="formation"><img src="/image/4-4-2.jpeg" alt=""><h3>4 - 4 - 2</h3></div> 
+              </div>
+            </section>
+      
+            <section class="page" id="players" style="display: none;">
+              <p>Set player instructions here.</p>
+            </section>
+      
+            <section class="page" id="roles" style="display: none;">
+              <h2>Roles</h2>
+              <p>Assign roles to your players here.</p>
+            </section>
+          </main>
     </div>
     <script src="sources/js/script.js"></script>
 </body>
