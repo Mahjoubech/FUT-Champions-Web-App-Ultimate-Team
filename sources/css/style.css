@@ -67,10 +67,7 @@ margin:16px 0 0 30px;
   color: #ffffff;
 
 }
-.container .positions.position span{
-color: #e2e2e2;
-font-size: 32px;
-}
+
 
 .container .positions .body-card {
   display: flex;
@@ -112,18 +109,6 @@ margin-top: -5px;
 .GK{
   right: 42.5%;
   bottom: 12%;
-}
-.pos{
-  position: absolute;
-  right: 42.5%;
-  bottom: 10%;
-  background-color: rgba(226, 193, 4, 0.7);
-  width: 4%;
-  height: 5%;
-  border-radius: 50%;
-  font-size: 14px;
-  text-align: center;
-  transform:rotate3d(200deg,50deg);
 }
 .CBL{
   bottom: 21%;
