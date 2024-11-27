@@ -18,7 +18,7 @@
           <div class="head-card">
             <div class="position">
                 <p>92</p>
-                <span>ST</span>
+                <span>GK</span>
             </div>
             <div class="image-player">
                 <img width="100" src="https://cdn.sofifa.net/players/020/801/25_120.png" alt="">
@@ -53,12 +53,13 @@
                 </div>
             </div>
         </div>
-        </div>
 
+        </div>
+        <div class="pos">GK</div>
         <div class="positions CB CBL "> <div class="head-card">
           <div class="position">
               <p>92</p>
-              <span>ST</span>
+              <span>CB</span>
           </div>
           <div class="image-player">
               <img width="100" src="https://cdn.sofifa.net/players/020/801/25_120.png" alt="">
@@ -96,7 +97,7 @@
         <div class="positions CB CBR"> <div class="head-card">
           <div class="position">
               <p>92</p>
-              <span>ST</span>
+              <span>CB</span>
           </div>
           <div class="image-player">
               <img width="100" src="https://cdn.sofifa.net/players/020/801/25_120.png" alt="">
@@ -134,7 +135,7 @@
         <div class="positions LB"> <div class="head-card">
           <div class="position">
               <p>92</p>
-              <span>ST</span>
+              <span>LB</span>
           </div>
           <div class="image-player">
               <img width="100" src="https://cdn.sofifa.net/players/020/801/25_120.png" alt="">
@@ -172,7 +173,7 @@
         <div class="positions  RB"> <div class="head-card">
           <div class="position">
               <p>92</p>
-              <span>ST</span>
+              <span>RB</span>
           </div>
           <div class="image-player">
               <img width="100" src="https://cdn.sofifa.net/players/020/801/25_120.png" alt="">
@@ -210,7 +211,7 @@
         <div class="positions CML"> <div class="head-card">
           <div class="position">
               <p>92</p>
-              <span>ST</span>
+              <span>CM</span>
           </div>
           <div class="image-player">
               <img width="100" src="https://cdn.sofifa.net/players/020/801/25_120.png" alt="">
@@ -248,7 +249,7 @@
         <div class="positions CMM"> <div class="head-card">
           <div class="position">
               <p>92</p>
-              <span>ST</span>
+              <span>CM</span>
           </div>
           <div class="image-player">
               <img width="100" src="https://cdn.sofifa.net/players/020/801/25_120.png" alt="">
@@ -286,7 +287,7 @@
         <div class="positions CMR"> <div class="head-card">
           <div class="position">
               <p>92</p>
-              <span>ST</span>
+              <span>CM</span>
           </div>
           <div class="image-player">
               <img width="100" src="https://cdn.sofifa.net/players/020/801/25_120.png" alt="">
@@ -324,7 +325,7 @@
         <div class="positions LF"> <div class="head-card">
           <div class="position">
               <p>92</p>
-              <span>ST</span>
+              <span>LF</span>
           </div>
           <div class="image-player">
               <img width="100" src="https://cdn.sofifa.net/players/020/801/25_120.png" alt="">
@@ -400,7 +401,7 @@
         <div class="positions RF"> <div class="head-card">
           <div class="position">
               <p>92</p>
-              <span>ST</span>
+              <span>RF</span>
           </div>
           <div class="image-player">
               <img width="100" src="https://cdn.sofifa.net/players/020/801/25_120.png" alt="">
@@ -452,75 +453,91 @@
 
           <main id="content">
             <section class="page" id="add-player" >
-              <div className="grid grid-cols-2 gap-6">
-                <div>
-                  <div className="mb-4">
-                    <label htmlFor="name" className="block text-gray-400 font-medium mb-2">
-                      Nom du joueur
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      className="bg-gray-800 border-gray-600 rounded-md px-3 py-2 w-full text-white"
-                      defaultValue={playerData.name}
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <label htmlFor="position" className="block text-gray-400 font-medium mb-2">
-                      Position
-                    </label>
-                    <select
-                      id="position"
-                      className="bg-gray-800 border-gray-600 rounded-md px-3 py-2 w-full text-white"
-                      defaultValue={playerData.position}
-                    >
-                      <option>GK</option>
-                      <option>CB</option>
-                      <option>LB</option>
-                      <option>RB</option>
-                      <option>CDM</option>
-                      <option>CM</option>
-                      <option>LM</option>
-                      <option>RM</option>
-                      <option>CAM</option>
-                      <option>LW</option>
-                      <option>RW</option>
-                      <option>ST</option>
-                    </select>
-                  </div>
-                  <div className="mb-4">
-                    <label htmlFor="photo" className="block text-gray-400 font-medium mb-2">
-                      Lien Photo
-                    </label>
-                    <input
-                      type="text"
-                      id="photo"
-                      className="bg-gray-800 border-gray-600 rounded-md px-3 py-2 w-full text-white"
-                      defaultValue={playerData.photo}
-                    />
-                  </div>
-                  <div className="flex items-center space-x-2 mb-4">
-                    <img
-                      src={playerData.flag}
-                      alt={playerData.nationality}
-                      className="w-6 h-6 rounded-full"
-                    />
-                    <span className="text-gray-400">{playerData.nationality}</span>
-                  </div>
-                  <div className="flex items-center space-x-2 mb-4">
-                    <img
-                      src={playerData.logo}
-                      alt={playerData.club}
-                      className="w-8 h-8 rounded"
-                    />
-                    <span className="text-gray-400">{playerData.club}</span>
-                  </div>
-                  <button className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded-md w-full">
-                    Ajouter le joueur
-                  </button>
+              <form action="f" class="player-form">
+                <div class="titleinfo">
+                  <h3>Skills </h3>
                 </div>
-                <div></div>
+                <div class="Information">
+                   <div class="infoname">
+                <div class="form-row">
+
+                  <label for="player-name">Name The Player :</label>
+                  <input type="text" id="player-name" placeholder="Entrez le nom">
+                </div>
+                
+                  <div class="form-row">
+                    <label for="player-position">Position : </label>
+                    <select id="player-position">
+                      <option value="GK">GK</option>
+                      <option value="CB">CB</option>
+                      <option value="LB">LB</option>
+                      <option value="RB">RB</option>
+                      <option value="CM">CM</option>
+                      <option value="LF">LF</option>
+                      <option value="RF">RF</option>
+                      <option value="ST">ST</option>
+                    </select>
+                 </div>
+                
+                  <div class="form-row">
+                    <label for="photo-link"> Photo :</label>
+                    <input type="file" id="photo-link" placeholder="">
+                  </div>
+                  <div class="form-row">
+                    <label for="photo-link">nationality :</label>
+                    <input type="text" id="nasional" placeholder="add nastionality">
+                  </div>
+                  <div class="form-row">
+                    <label for="photo-link">Club :</label>
+                    <input type="text" id="club" placeholder="add club">
+                  </div>
+               </div>
+                
+               
+              <div class="info-player">
+                <div class="form-row">
+                  <label for="rating">Rating</label>
+                  <input type="number" id="rating">
+                </div>
+                
+                <div class="form-row">
+                  <label for="Pace">Pace</label>
+                  <input type="number" id="Pace">
+                </div>
+              
+                <div class="form-row">
+                  <label for="Shooting">Shooting</label>
+                  <input type="number" id="Shooting">
+                </div>
+              
+                <div class="form-row">
+                  <label for="Passing">Passing</label>
+                  <input type="number" id="Passing">
+                </div>
+              
+                <div class="form-row">
+                  <label for="Dribbling">Dribbling</label>
+                  <input type="number" id="Dribbling">
+                </div>
+              
+                <div class="form-row">
+                  <label for="Defending">Defending</label>
+                  <input type="number" id="Defending">
+                </div>
+              
+                <div class="form-row">
+                  <label for="Physical">Physical</label>
+                  <input type="number" id="Physical">
+                </div>
+                <button type="submit"><span>+</span> <h3>Add</h3></button>
+
               </div>
+                </div>
+              
+              
+              
+              </form>
+              
             </section>
       
             <section class="page" id="formations" style="display: none;">
@@ -532,7 +549,8 @@
             </section>
       
             <section class="page" id="players" style="display: none;">
-              <div class="positions">
+              <div class="gridcards">
+                 <div class="positions">
                 <div class="head-card">
                   <div class="position">
                       <p>92</p>
@@ -807,6 +825,8 @@
                   </div>
               </div>
               </div>
+              </div>
+             
             </section>
           </main>
     </div>
