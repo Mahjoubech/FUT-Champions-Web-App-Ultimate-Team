@@ -220,7 +220,7 @@ left : 31%
     
   }
   
-  nav button:hover, .filtbtn.active {
+  nav button:hover, .active {
    border-bottom: 2px solid #f05d09;
    color: #f05d09;
   }
@@ -502,4 +502,13 @@ left : 31%
   .info-player {
     grid-template-columns: 1fr; 
   }
+}
+
+/* filltrage */
+.styleactive{
+  border-bottom: 2px solid #f05d09;
+  color: #f05d09;
+}
+.hideactive{
+  visibility: visible;
 }
