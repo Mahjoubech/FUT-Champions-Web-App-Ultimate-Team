@@ -493,6 +493,9 @@ left : 31%
   border: 1px solid #444;
 }
 @media (max-width: 600px) {
+  .form-Ajout{
+    display: none;
+  }
   .player-form {
     padding: 20px;
     margin: 20px;
@@ -511,4 +514,195 @@ left : 31%
 }
 .hideactive{
   visibility: visible;
+}
+
+/* 
+nav responsive */
+/* Basic Styles */
+.navbar {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  display: none;
+  justify-content: space-between;
+ padding: 4px;
+}
+
+.navbar ul {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.navbar li {
+  display: inline-block;
+  font-size: 34px;
+  width: 20%;
+  height: 100%;
+  
+}
+.navbar li:hover{
+  color: #e64a19;
+}
+.navbar .actve {
+  color: #ff460e;
+}
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.navbar i {
+  margin-right: 5px; 
+}
+
+
+
+/*for Tablet */
+@media (max-width: 768px) {
+  body{
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: center;
+   gap: 50px;
+  }
+  .container .positions{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url('/image/badge_gold.webp');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    color: white;
+    font-size: 6px;
+   height: 120px;
+   width: 90px;
+    box-shadow: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+    transition: all 0.5s ease;
+    
+  }
+  .container .positions:hover{
+    transform: rotateY(20deg) rotateX(15deg);
+}
+.container .positions:hover{
+  transform: rotateY(20deg) rotateX(15deg);
+
+}
+.container .positions .head-card .position {
+  position: absolute;
+  text-align: center;
+  left: 15px;
+  top: 15px;
+}
+.container .positions .head-card img{
+width: 50%;
+margin:10px 0 0 25px;
+}
+.container .positions .position p {
+  font-size: 0.6rem;
+  font-weight: 900;
+  color: #ffffff;
+
+}
+
+
+.container .positions .body-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateY(2.5px);
+}
+
+.container .positions .body-card h3 {
+  text-align: center;
+  width: 90%;
+  font-weight: 600;
+  font-size: 0.4rem;
+  color: whitesmoke;
+  text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  margin-bottom: 19px;
+}
+
+.container .positions .body-card .rate-player {
+  display: flex;
+  color: white;
+  gap: 8px;
+  text-align: center;
+margin-top: -20px;
+}
+
+.container .positions .rate-player p {
+  margin: 2px -150px;
+  font-size: 0.2rem;
+  color: #fff7cd;
+  font-weight: 700;
+}
+
+.container .positions .rate-player span {
+  font-size: 0.2rem;
+  margin-bottom: 10px;
+  color:linear-gradient(to right, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.5));
+} 
+  .form-Ajout{
+    display: none;
+  }
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+
+  .navbar ul {
+    display: flex;
+    text-align: center;
+  }
+
+  .navbar li {
+    margin: 10px 0;
+  }
+
+  .navbar i {
+    margin-right: 10px; /* Increase space between icon and text */
+  }
+}
+
+/*  for Phone */
+@media (max-width: 480px) {
+  .form-Ajout{
+  display: none;  
+  }
+  
+  .navbar {
+    /* display: flex; */
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+  }
+
+  .navbar ul {
+    display: block;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .navbar li {
+    margin: 8px 0;
+  }
+
+  .navbar a {
+    font-size: 14px;
+  }
+
+  .navbar i {
+    font-size: 18px; /* Reduce icon size on smaller screens */
+  }
 }
