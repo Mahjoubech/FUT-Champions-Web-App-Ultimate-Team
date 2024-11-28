@@ -11,6 +11,10 @@ document.getElementById('players').addEventListener('click', () => {
     document.getElementById('add-player').classList.remove('active')
     document.getElementById('formations').classList.remove('active')
     showpage('players','page-players')});
+    document.getElementById('Change').addEventListener('click', () =>{
+        document.getElementById('formations').classList.remove('active')
+        document.getElementById('players').classList.remove('active')
+        showpage('Change','changment')} );
 function showpage(hideId,pageId) {
     document.querySelectorAll('.filtbtn').forEach(button => {
         button.classList.remove('active');
@@ -34,13 +38,14 @@ fetch("sources/api/players.json")
     localStorage.setItem('succer', JSON.stringify(player));
     console.log('Données sauvegardées dans localStorage');
     showplayers();
+    showselected()
 })
 let container = document.getElementById('contentPlayers')
-let field = document.querySelector('.container')
+let staduim = document.querySelector('.container')
 function showplayers(){
      dataplayers.forEach(data=>{
         if(data.position === 'GK'){
-            let content = `<div class="positions ${data.position}">
+            let content = `<div class="positions">
             <div class="head-card">
               <div class="position">
                   <p>${data.rating}</p>
@@ -124,10 +129,132 @@ function showplayers(){
               </div>`;
               container.innerHTML += content;  
         }
-        
+      
      })
 }
 
+function selectplayer() {
+    let selected = {
+        GK: [],
+        CBL: [],
+        CBR: [],
+        LB: [],
+        RB: [],
+        CML: [],
+        CMM: [],
+        CMR: [],
+        LF: [],
+        RF: [],
+        ST: []
+    };
 
-showplayers()
+    for (let key in selected) {
+        selected[key] = dataplayers.filter(player => player.position === key).slice(0, 1);
+    }
+
+    return selected;
+}
+
+
+console.log(selectplayer());
+function showselected(){
+    let team = selectplayer()
+    for(let pos in team){
+        team[pos].forEach(player=>{
+         if(player.position === 'GK'){
+            let content = `<div class="positions ${pos}">
+            <div class="head-card">
+              <div class="position">
+                  <p>${player.rating}</p>
+                  <span>${player.position}</span>
+              </div>
+              <div class="image-player">
+                  <img width="100" src="${player.photo}" alt="">
+              </div>
+          </div>
+          <div class="body-card">
+              <h3>${player.name}</h3>
+              <div class="rate-player">
+                  <div>
+                      <p>PIV</p>
+                      <span>${player.diving}</span>
+                  </div>
+                  <div>
+                      <p>HAN</p>
+                      <span>${player.handling}</span>
+                  </div>
+                  <div>
+                      <p>KIC</p>
+                      <span>${player.kicking}</span>
+                  </div>
+                  <div>
+                      <p>REF</p>
+                      <span>${player.reflexes}</span>
+                  </div>
+                  <div>
+                      <p>SPE</p>
+                      <span>${player.speed}</span>
+                  </div>
+                  <div>
+                      <p>POS</p>
+                      <span>${player.positioning}</span>
+                  </div>
+              </div>
+          </div>
+          </div>`;
+          staduim.innerHTML += content
+        }else{
+            content = `<div class="positions ${pos}">
+                <div class="head-card">
+                  <div class="position">
+                      <p>${player.rating}</p>
+                      <span>${player.position}</span>
+                  </div>
+                  <div class="image-player">
+                      <img width="100" src="${player.photo}" alt="">
+                  </div>
+              </div>
+              <div class="body-card">
+                  <h3>${player.name}</h3>
+                  <div class="rate-player">
+                      <div>
+                          <p>PAC</p>
+                          <span>${player.pace}</span>
+                      </div>
+                      <div>
+                          <p>SHO</p>
+                          <span>${player.shooting}</span>
+                      </div>
+                      <div>
+                          <p>PAS</p>
+                          <span>${player.passing}</span>
+                      </div>
+                      <div>
+                          <p>DRI</p>
+                          <span>${player.dribbling}</span>
+                      </div>
+                      <div>
+                          <p>DEF</p>
+                          <span>${player.defending}</span>
+                      </div>
+                      <div>
+                          <p>PHY</p>
+                          <span>${player.physical}</span>
+                      </div>
+                  </div>
+              </div>
+              </div>`;
+               staduim.innerHTML += content
+        }   
+        });
+        
+    }
+}
+
+
+// Appel des fonctions
+showplayers();
+
+showselected()
+
 

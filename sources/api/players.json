@@ -3,7 +3,7 @@
       {
         "name": "Messi",
         "photo": "https://cdn.sofifa.net/players/158/023/25_120.png",
-        "position": "RW",
+        "position": "RF",
         "nationality": "Argentina",
         "flag": "https://cdn.sofifa.net/flags/ar.png",
         "club": "Inter Miami",
@@ -35,7 +35,7 @@
       {
         "name": "De Bruyne",
         "photo": "https://cdn.sofifa.net/players/192/985/25_120.png",
-        "position": "CM",
+        "position": "CMM",
         "nationality": "Belgium",
         "flag": "https://cdn.sofifa.net/flags/be.png",
         "club": "Manchester City",
@@ -67,7 +67,7 @@
       {
         "name": "van Dijk",
         "photo": "https://cdn.sofifa.net/players/203/376/25_120.png",
-        "position": "CB",
+        "position": "CBL",
         "nationality": "Netherlands",
         "flag": "https://cdn.sofifa.net/flags/nl.png",
         "club": "Liverpool",
@@ -83,7 +83,7 @@
       {
         "name": "Rudiger",
         "photo": "https://cdn.sofifa.net/players/205/452/25_120.png",
-        "position": "CB",
+        "position": "CBR",
         "nationality": "Germany",
         "flag": "https://cdn.sofifa.net/flags/de.png",
         "club": "Real Madrid",
@@ -99,7 +99,7 @@
       {
         "name": "Neymar Jr",
         "photo": "https://cdn.sofifa.net/players/190/871/25_120.png",
-        "position": "LW",
+        "position": "LF",
         "nationality": "Brazil",
         "flag": "https://cdn.sofifa.net/flags/br.png",
         "club": "Al-Hilal",
@@ -115,7 +115,7 @@
       {
         "name": "Kimmich",
         "photo": "https://cdn.sofifa.net/players/212/622/25_120.png",
-        "position": "CM",
+        "position": "CML",
         "nationality": "Germany",
         "flag": "https://cdn.sofifa.net/flags/de.png",
         "club": "Bayern Munich",
@@ -147,7 +147,7 @@
       {
         "name": "Modrić",
         "photo": "https://cdn.sofifa.net/players/177/003/25_120.png",
-        "position": "CM",
+        "position": "CMM",
         "nationality": "Croatia",
         "flag": "https://cdn.sofifa.net/flags/hr.png",
         "club": "Real Madrid",
@@ -163,7 +163,7 @@
       {
         "name": "Vinicius Jr",
         "photo": "https://cdn.sofifa.net/players/238/794/25_120.png",
-        "position": "LW",
+        "position": "LF",
         "nationality": "Brazil",
         "flag": "https://cdn.sofifa.net/flags/br.png",
         "club": "Real Madrid",
@@ -179,7 +179,7 @@
       {
         "name": "Brahim Diáz",
         "photo": "https://cdn.sofifa.net/players/231/410/25_120.png",
-        "position": "LW",
+        "position": "RF",
         "nationality": "Morocco",
         "flag": "https://cdn.sofifa.net/flags/ma.png",
         "club": "Real Madrid",
@@ -227,7 +227,7 @@
       {
         "name": "Kanté",
         "photo": "https://cdn.sofifa.net/players/215/914/25_120.png",
-        "position": "CDM",
+        "position": "LB",
         "nationality": "France",
         "flag": "https://cdn.sofifa.net/flags/fr.png",
         "club": "Al-Ittihad",
@@ -275,7 +275,7 @@
       {
         "name": "Fernandes",
         "photo": "https://cdn.sofifa.net/players/212/198/25_120.png",
-        "position": "CM",
+        "position": "CMR",
         "nationality": "Portugal",
         "flag": "https://cdn.sofifa.net/flags/pt.png",
         "club": "Manchester United",
@@ -291,7 +291,7 @@
       {
         "name": "Sancho",
         "photo": "https://cdn.sofifa.net/players/233/049/25_120.png",
-        "position": "LW",
+        "position": "LF",
         "nationality": "England",
         "flag": "https://cdn.sofifa.net/flags/gb-eng.png",
         "club": "Manchester United",
@@ -370,7 +370,7 @@
       {
         "name": "Saibari",
         "photo": "https://cdn.sofifa.net/players/259/480/25_120.png",
-        "position": "CM",
+        "position": "CMR",
         "nationality": "Morocco",
         "flag": "https://cdn.sofifa.net/flags/ma.png",
         "club": "PSV",
