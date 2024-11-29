@@ -99,7 +99,8 @@ let staduim = document.querySelector('.container')
 function showplayers() {
     dataplayers.forEach(data => {
         if(data.position === 'GK'){
-            let content =` <div class="positions" id="${data.name}" onclick='ChangerPlayer(${JSON.stringify(data)})'>
+            let content =`<div class = "prancipal">
+             <div class="positions" id="${data.name}" onclick='ChangerPlayer(${JSON.stringify(data)})'>
             <div class="head-card">
               <div class="position">
                   <p>${data.rating}</p>
@@ -138,13 +139,20 @@ function showplayers() {
                   </div>
               </div>
           </div>
-          <button class="delete-btn">
-    <i class="fas fa-trash"></i> Delete
-  </button>
+         
+          </div>
+           <div class="edit-delet">
+              <button class="delete-btn">
+                 <i class="fa-solid fa-xmark"></i>
+              </button>
+               <button class="edit-btn">
+              <i class="fa-solid fa-pen-to-square"></i>              </button>
+                 </div>
           </div>`;
           container.innerHTML += content;  
         }else{
-            content =` <div class="positions" id="${data.name}" onclick='ChangerPlayer(${JSON.stringify(data)})'">
+            content =` <div class = "prancipal">
+            <div class="positions" id="${data.name}" onclick='ChangerPlayer(${JSON.stringify(data)})'">
                 <div class="head-card">
                   <div class="position">
                       <p>${data.rating}</p>
@@ -183,9 +191,14 @@ function showplayers() {
                       </div>
                   </div>
               </div>
+              </div>
+              <div class="edit-delet">
               <button class="delete-btn">
-    <i class="fas fa-trash"></i> Delete
-  </button>
+                 <i class="fa-solid fa-xmark"></i>
+              </button>
+               <button class="edit-btn">
+              <i class="fa-solid fa-pen-to-square"></i>              </button>
+                 </div>
               </div>`;
               container.innerHTML += content;  
  } })
