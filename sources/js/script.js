@@ -43,17 +43,24 @@ addplayer.addEventListener('click',()=>{
       let reader = new FileReader();
 
       reader.onload = function (event) {
-          let newplayer = {
-            nameplayer: nameplayert.value,
-            posplayer: posplayert.value,
-            ratingpl: ratingplt.value,
-              photoplayer : event.target.result, 
-              pacepl: paceplt.value,
-              shootingpl: shootingplt.value,
-              passingpl: passingplt.value,
-              dribblingpl: dribblingplt.value,
-              physiqpl: physiqplt.value,
-          };
+        let newplayer = {
+            name: nameplayert.value,  
+            photo: event.target.result,  
+            position: posplayert.value,  
+            nationality: "Argentina", 
+            flag: "https://cdn.sofifa.net/flags/ar.png",  
+            club: "Inter Miami",
+            logo: "https://cdn.sofifa.net/meta/team/239235/120.png",  
+            rating: parseInt(ratingplt.value),  
+            pace: parseInt(paceplt.value),  
+            shooting: parseInt(shootingplt.value),  
+            passing: parseInt(passingplt.value),  
+            dribbling: parseInt(dribblingplt.value),  // Dribbling as a number
+            defending: 35,  // Default value for defending, can be adjusted
+            physical: parseInt(physiqplt.value),  // Physical as a number
+        };
+          console.log(newplayer);
+          
 
           dataplayers.push(newplayer);
           localStorage.setItem('succer', JSON.stringify(dataplayers));
@@ -91,31 +98,6 @@ let container = document.getElementById('contentPlayers')
 let staduim = document.querySelector('.container')
 function showplayers() {
     dataplayers.forEach(data => {
-        // let content = `
-        // <div class="positions" id="${data.name}" onclick='ChangerPlayer(${JSON.stringify(data)})'>
-        //     <div class="head-card">
-        //         <div class="position">
-        //             <p>${data.rating}</p>
-        //             <span>${data.position}</span>
-        //         </div>
-        //         <div class="image-player">
-        //             <img width="100" src="${data.photo}" alt="">
-        //         </div>
-        //     </div>
-        //     <div class="body-card">
-        //         <h3>${data.name}</h3>
-        //         <div class="rate-player">
-        //             <div><p>PAC</p><span>${data.pace || "N/A"}</span></div>
-        //             <div><p>SHO</p><span>${data.shooting || "N/A"}</span></div>
-        //             <div><p>PAS</p><span>${data.passing || "N/A"}</span></div>
-        //             <div><p>DRI</p><span>${data.dribbling || "N/A"}</span></div>
-        //             <div><p>DEF</p><span>${data.defending || "N/A"}</span></div>
-        //             <div><p>PHY</p><span>${data.physical || "N/A"}</span></div>
-        //         </div>
-        //     </div>
-        // </div>`;
-        
-        // container.innerHTML += content;
         if(data.position === 'GK'){
             let content =` <div class="positions" id="${data.name}" onclick='ChangerPlayer(${JSON.stringify(data)})'>
             <div class="head-card">
@@ -156,6 +138,9 @@ function showplayers() {
                   </div>
               </div>
           </div>
+          <button class="delete-btn">
+    <i class="fas fa-trash"></i> Delete
+  </button>
           </div>`;
           container.innerHTML += content;  
         }else{
@@ -198,6 +183,9 @@ function showplayers() {
                       </div>
                   </div>
               </div>
+              <button class="delete-btn">
+    <i class="fas fa-trash"></i> Delete
+  </button>
               </div>`;
               container.innerHTML += content;  
  } })
