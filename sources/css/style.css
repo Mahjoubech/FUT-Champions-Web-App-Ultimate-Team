@@ -44,11 +44,11 @@ body {
   transition: all 0.5s ease;
   
 }
-.container .positions:hover{
+/* .container .positions:hover{
     transform: rotateY(20deg) rotateX(15deg);
-}
+} */
 .container .positions:hover{
-  transform: rotateY(20deg) rotateX(15deg);
+  transform: scale(1.01);
 
 }
 .container .positions .head-card .position {
@@ -395,6 +395,10 @@ left : 31%
   
 }
 .infoname{
+  justify-content: space-around;
+  flex-direction: column;
+  display: flex
+;
   margin: -40px 0 0 0;
 }
 .infoname input{
