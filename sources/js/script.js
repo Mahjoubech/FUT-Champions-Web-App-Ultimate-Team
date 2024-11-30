@@ -23,6 +23,10 @@ function showpage(hideId,pageId) {
 }
 
 showpage('add-player','page-add-player');
+
+
+
+
 let player;
 let dataplayers = JSON.parse(localStorage.getItem('succer')) || [];
 ////Ajioute players
@@ -36,9 +40,43 @@ let shootingplt = document.getElementById('Shooting')
 let passingplt = document.getElementById('Passing')
 let dribblingplt = document.getElementById('Dribbling')
 let physiqplt = document.getElementById('Physical')
+let defendingIt = document.getElementById('Defending')
 
-addplayer.addEventListener('click',()=>{
-    let file = photoplayert.files[0];
+//ajout player
+addplayer.addEventListener('click',(e)=>{
+ e.preventDefault();
+      //  validation inputs values
+      let nameRegex = /^[a-zA-Z\s]{1,15}$/; 
+      let ratingRegex = /^([1-9][0-9]?|100)$/; 
+      let positionRegex = /^[a-zA-Z\s]+$/; 
+      if (!nameRegex.test(nameplayert.value)) {
+          createToast('warning', 'fa-solid fa-triangle-exclamation', 'Warning', 'Invalid player name! Please enter only letters and spaces.');
+
+          return;
+      }
+      if (!ratingRegex.test(ratingplt.value)) {
+          createToast('warning', 'fa-solid fa-triangle-exclamation', 'Warning', 'Invalid rating! Please enter a number between 1 and 100.');
+
+          return;
+      }
+      if (!positionRegex.test(posplayert.value)) {
+          createToast('warning', 'fa-solid fa-triangle-exclamation', 'Warning', 'Invalid position! Please enter a number between 1 and 100.');
+
+          return;
+      }
+      let playerStats = [paceplt, shootingplt, passingplt, dribblingplt, physiqplt];
+    playerStats.forEach(stat => {
+        if (!ratingRegex.test(stat.value)) {
+            createToast('warning', 'fa-solid fa-triangle-exclamation', 'Warning', `Invalid ${stat.name}! Please enter a number between 1 and 100.`);
+            return;
+        }
+    });
+      let file = photoplayert.files[0];
+      if (!file) {
+          createToast('warning', 'fa-solid fa-triangle-exclamation', 'Warning', 'Please add a photo of the player.');
+          return;
+      }
+    
   if (file) {
       let reader = new FileReader();
 
@@ -55,16 +93,18 @@ addplayer.addEventListener('click',()=>{
             pace: parseInt(paceplt.value),  
             shooting: parseInt(shootingplt.value),  
             passing: parseInt(passingplt.value),  
-            dribbling: parseInt(dribblingplt.value),  // Dribbling as a number
-            defending: 35,  // Default value for defending, can be adjusted
-            physical: parseInt(physiqplt.value),  // Physical as a number
+            dribbling: parseInt(dribblingplt.value),  
+            defending:parseInt(defendingIt.value),  
+            physical: parseInt(physiqplt.value),  
         };
           console.log(newplayer);
           
 
           dataplayers.push(newplayer);
           localStorage.setItem('succer', JSON.stringify(dataplayers));
-          alert('Player added successfully!');
+          createToast('Success', 'fa-solid fa-circle-exclamation', 'success', 'Player added successfully!');
+          showplayers();
+          
           nameplayert.value = "";
           posplayert.value = "";
           ratingplt.value = "";
@@ -74,12 +114,14 @@ addplayer.addEventListener('click',()=>{
           passingplt.value = "";
           dribblingplt.value = "";
           physiqplt.value = "";
-          showplayers()
+         
       };
 
       reader.readAsDataURL(file); 
+   
   } else {
-      alert('please add photo the player');
+      createToast('warning', 'fa-solid fa-triangle-exclamation', 'Warning', 'please add photo the player');
+
   }
 })
 
@@ -456,7 +498,4 @@ let notifications = document.querySelector('.notifications');
    
 
 // Appel des fonctions
-showplayers();
-
-
-
+window.onload = showplayers()
