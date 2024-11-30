@@ -97,7 +97,8 @@ fetch("sources/api/players.json")
 let container = document.getElementById('contentPlayers')
 let staduim = document.querySelector('.container')
 function showplayers() {
-    dataplayers.forEach(data => {
+    container.innerHTML = ""
+    dataplayers.forEach((data,index) => {
         if(data.position === 'GK'){
             let content =`<div class = "prancipal">
              <div class="positions" id="${data.name}" onclick='ChangerPlayer(${JSON.stringify(data)})'>
@@ -141,7 +142,7 @@ function showplayers() {
           </div>
          
           </div>
-           <div class="edit-delet">
+           <div class="edit-delet" onclick = "delet(${index})">
               <button class="delete-btn">
                  <i class="fa-solid fa-xmark"></i>
               </button>
@@ -193,7 +194,7 @@ function showplayers() {
               </div>
               </div>
               <div class="edit-delet">
-              <button class="delete-btn">
+              <button class="delete-btn"  onclick = "delet(${index})">
                  <i class="fa-solid fa-xmark"></i>
               </button>
                <button class="edit-btn">
@@ -424,15 +425,38 @@ function showselected(){
         
     }
 }
+//Notification.
 
+let notifications = document.querySelector('.notifications');
+    
+    function createToast(type, icon, title, text){
+        let newToast = document.createElement('div');
+        newToast.innerHTML = `
+            <div class="toast ${type}">
+                <i class="${icon}"></i>
+                <div class="content">
+                    <div class="title">${title}</div>
+                    <span>${text}</span>
+                </div>
+                <i class="fa-solid fa-xmark" onclick="(this.parentElement).remove()"></i>
+            </div>`;
+        notifications.appendChild(newToast);
+        newToast.timeOut = setTimeout(
+            ()=>newToast.remove(), 5000
+        )
+    }
 
-
-
-
+    //delet player
+    function delet(i){
+        dataplayers.splice(i, 1); 
+        localStorage.succer = JSON.stringify(dataplayers);
+        showplayers();
+        createToast('Success', 'fa-solid fa-circle-exclamation', 'success', 'rah tm7a had zeb');
+    }
+   
 
 // Appel des fonctions
 showplayers();
 
-showselected()
 
 

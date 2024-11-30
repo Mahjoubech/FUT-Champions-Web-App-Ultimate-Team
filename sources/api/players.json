@@ -398,22 +398,6 @@
         "reflexes": 90,
         "speed": 50,
         "positioning": 85
-      },
-      {
-        "name": "Donnarumma",
-        "photo": "https://cdn.sofifa.net/players/230/621/25_120.png",
-        "position": "GK",
-        "nationality": "Italy",
-        "flag": "https://cdn.sofifa.net/flags/it.png",
-        "club": "Paris Saint-Germain",
-        "logo": "https://cdn.sofifa.net/meta/team/591/120.png",
-        "rating": 89,
-        "diving": 88,
-        "handling": 84,
-        "kicking": 75,
-        "reflexes": 90,
-        "speed": 50,
-        "positioning": 85,
       }
     ]
   }
