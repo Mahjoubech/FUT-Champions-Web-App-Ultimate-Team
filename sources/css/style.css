@@ -584,10 +584,6 @@ left : 31%
 .hideactive{
   visibility: visible;
 }
-
-/* 
-nav responsive */
-/* Basic Styles */
 .navbar {
   background-color: rgba(0, 0, 0, 0.3);
   color: #fff;
@@ -705,7 +701,7 @@ margin:10px 0 0 25px;
   color: white;
   gap: 8px;
   text-align: center;
-margin-top: -20px;
+  margin-top: -20px;
 }
 
 .container .positions .rate-player p {
