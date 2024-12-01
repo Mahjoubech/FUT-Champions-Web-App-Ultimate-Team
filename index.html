@@ -18,7 +18,9 @@
     <div class="container">
         <h1>FORMATION</h1>
         <img src="/image/background field.png" alt="Football Field" class="background-image">
-
+        <div id="containr">
+         
+        </div>
     </div>
     <!---- Format Ajout Players and Tactics Formation-->
     <div class="form-Ajout">
@@ -51,10 +53,13 @@
                     <label for="player-position">Position : </label>
                     <select id="player-position">
                       <option value="GK">GK</option>
-                      <option value="CB">CB</option>
+                      <option value="CBL">CB</option>
+                      <option value="CBR">CB</option>
                       <option value="LB">LB</option>
                       <option value="RB">RB</option>
-                      <option value="CM">CM</option>
+                      <option value="CMM">CMM</option>
+                      <option value="CML">CML</option>
+                      <option value="CMR">CMR</option>
                       <option value="LF">LF</option>
                       <option value="RF">RF</option>
                       <option value="ST">ST</option>
@@ -142,6 +147,86 @@
         <li><i class="fas fa-futbol"></i></li>
       </ul>
     </nav>
+
+    <div class="formedit modal" style="visibility: hidden;">
+      <form class="player-form formplayer">
+          <button class="close-button" onclick="closeModal()">
+              <i class="fa fa-times"></i>
+          </button>
+          <div class="titleinfo">
+              <h3>Edit Player</h3>
+          </div>
+          <div class="Information">
+              <div class="form-row">
+                  <label for="player-name">Player Name</label>
+                  <input type="text" id="player-nameedit" placeholder="Name">
+              </div>
+  
+              <div class="form-row" >
+                  <label for="player-position">Position</label>
+                  <select id="player-positionedit">
+                      <option value="GK">GK</option>
+                      <option value="CB">CB</option>
+                      <option value="LB">LB</option>
+                      <option value="RB">RB</option>
+                      <option value="CMM">CMM</option>
+                      <option value="CML">CML</option>
+                      <option value="CMR">CMR</option>
+                      <option value="LF">LF</option>
+                      <option value="RF">RF</option>
+                      <option value="ST">ST</option>
+                  </select>
+              </div>
+  
+              <div class="form-row">
+                  <label for="photo-link">Photo</label>
+                  <input type="text" id="photo-linkedit">
+              </div>
+  
+              <div class="info-player">
+                  <div class="form-row">
+                      <label for="rating">Rating</label>
+                      <input type="number" id="ratingedit">
+                  </div>
+  
+                  <div class="form-row">
+                      <label for="Pace">Pace</label>
+                      <input type="number" id="Paceedit">
+                  </div>
+  
+                  <div class="form-row">
+                      <label for="Shooting">Shooting</label>
+                      <input type="number" id="Shootingedit">
+                  </div>
+  
+                  <div class="form-row">
+                      <label for="Passing">Passing</label>
+                      <input type="number" id="Passingedit">
+                  </div>
+  
+                  <div class="form-row">
+                      <label for="Dribbling">Dribbling</label>
+                      <input type="number" id="Dribblingedit">
+                  </div>
+  
+                  <div class="form-row">
+                      <label for="Defending">Defending</label>
+                      <input type="number" id="Defendingedit">
+                  </div>
+  
+                  <div class="form-row">
+                      <label for="Physical">Physical</label>
+                      <input type="number" id="Physicaledit">
+                  </div>
+              </div>
+  
+              <button type="submit" id="clickadd" onclick='edit(`${index}`)'>
+                  <h3>EDIT</h3>
+              </button>
+          </div>
+      </form>
+  </div>
+  
     <div class="notifications"></div>
     <script src="sources/js/script.js"></script>
 </body>
