@@ -492,8 +492,8 @@ left : 31%
   justify-content: center;
   align-items: center;
   grid-template-columns: 40% 40%;
-  gap: 15px; 
-  margin-bottom: 20px; 
+  gap: 10px; 
+  margin-bottom: 21px; 
   height: auto;
   border: 3px dotted rgba(197, 58, 23, 0.2);
 }
@@ -904,6 +904,10 @@ margin:15px 0 0 25px;
       transform: translateX(0);
   }
 }
+@keyframes timeOut{
+  to{
+  width: 0;
+  }}
 
 .formedit .Information {
   display: flex;
@@ -1026,4 +1030,9 @@ width: 0;
 
 .close-button:hover {
   color: #ff0000;
+}
+.selected-in-stadium {
+  border: 3px solid #ff6b00 !important;
+  background-color: rgba(255, 107, 0, 0.1);
+  transition: all 0.3s ease;
 }
