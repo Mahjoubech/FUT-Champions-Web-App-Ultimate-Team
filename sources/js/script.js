@@ -71,15 +71,22 @@ addplayer.addEventListener('click',(e)=>{
             return;
         }
     });
+
       let file = photoplayert.files[0];
       if (!file) {
           createToast('warning', 'fa-solid fa-triangle-exclamation', 'Warning', 'Please add a photo of the player.');
           return;
       }
-    
+      if (posplayert.value === 'GK') {
+        console.log(posplayert.value);
+        
+        displayGKForm();
+    } else {
+        displayPlayerForm();
+    }
   if (file) {
       let reader = new FileReader();
-
+  
       reader.onload = function (event) {
         let newplayer = {
             name: nameplayert.value,  
@@ -130,7 +137,72 @@ addplayer.addEventListener('click',(e)=>{
   }
 })
 
+//function display form
+function displayGKForm() {
+    document.getElementById('informationskills').innerHTML = `
+        <div class="form-row">
+            <label for="rating">Rating</label>
+            <input type="number" id="rating">
+        </div>
+        <div class="form-row">
+            <label for="Diving">Diving</label>
+            <input type="number" id="Diving">
+        </div>
+        <div class="form-row">
+            <label for="Handling">Handling</label>
+            <input type="number" id="Handling">
+        </div>
+        <div class="form-row">
+            <label for="Kicking">Kicking</label>
+            <input type="number" id="Kicking">
+        </div>
+        <div class="form-row">
+            <label for="Reflexes">Reflexes</label>
+            <input type="number" id="Reflexes">
+        </div>
+        <div class="form-row">
+            <label for="Speed">Speed</label>
+            <input type="number" id="Speed">
+        </div>
+        <div class="form-row">
+            <label for="Positioning">Positioning</label>
+            <input type="number" id="Positioning">
+        </div>
+        <button type="submit" id="clickadd"><span>+</span> <h3>Add</h3></button>`;
+}
 
+function displayPlayerForm() {
+    document.getElementById('informationskills').innerHTML = `
+        <div class="form-row">
+            <label for="rating">Rating</label>
+            <input type="number" id="rating">
+        </div>
+        <div class="form-row">
+            <label for="Pace">Pace</label>
+            <input type="number" id="Pace">
+        </div>
+        <div class="form-row">
+            <label for="Shooting">Shooting</label>
+            <input type="number" id="Shooting">
+        </div>
+        <div class="form-row">
+            <label for="Passing">Passing</label>
+            <input type="number" id="Passing">
+        </div>
+        <div class="form-row">
+            <label for="Dribbling">Dribbling</label>
+            <input type="number" id="Dribbling">
+        </div>
+        <div class="form-row">
+            <label for="Defending">Defending</label>
+            <input type="number" id="Defending">
+        </div>
+        <div class="form-row">
+            <label for="Physical">Physical</label>
+            <input type="number" id="Physical">
+        </div>
+        <button type="submit" id="clickadd"><span>+</span> <h3>Add</h3></button>`;
+}
 
 fetch("sources/api/players.json")
 .then(res => res.json())
@@ -194,8 +266,10 @@ function showplayers() {
               <button class="delete-btn">
                  <i class="fa-solid fa-xmark"></i>
               </button>
+              
                <button class="edit-btn" onclick="editPlayer(${index})">
-              <i class="fa-solid fa-pen-to-square"></i>              </button>
+              <i class="fa-solid fa-pen-to-square"></i>
+               </button>
                  </div>
           </div>`;
           container.innerHTML += content;  
@@ -500,6 +574,7 @@ let notifications = document.querySelector('.notifications');
         dataplayers.splice(i, 1); 
         localStorage.succer = JSON.stringify(dataplayers);
         showplayers();
+        showselected()
 
         createToast('Success', 'fa-solid fa-circle-exclamation', 'success', 'Player Delet successfully!');
     }
@@ -517,6 +592,7 @@ function editPlayer(index) {
     document.getElementById('Physicaledit').value = player.physical;
     document.getElementById('photo-linkedit').value = player.photo || '';
     document.querySelector('.modal').style.visibility = 'visible';
+
     document.querySelector('.formplayer').onsubmit = (e) => {
     e.preventDefault(); 
       player.name = document.getElementById('player-nameedit').value;
@@ -529,19 +605,19 @@ function editPlayer(index) {
       player.defending = parseInt(document.getElementById('Defendingedit').value);
       player.physical = parseInt(document.getElementById('Physicaledit').value);
       player.photo = document.getElementById('photo-linkedit').value;
-
+       document.querySelector('.modal').style.visibility = 'hidden';
+      
       localStorage.setItem('succer', JSON.stringify(dataplayers));
-  
+      createToast('Success', 'fa-solid fa-circle-check', 'success', 'Player updated successfully!');
       showplayers();
-      createToast('Success', 'fa-solid fa-circle-check', 'Player updated successfully!');
+      showselected()
+     
     };
   }
-
-  function closeModal() {
-    document.querySelector('.modal').style.display = 'none';
-  }
   
 
+
+  
 // Appel des fonctions
  showplayers()
  
