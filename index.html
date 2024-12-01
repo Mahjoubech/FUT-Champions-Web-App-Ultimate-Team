@@ -53,8 +53,8 @@
                     <label for="player-position">Position : </label>
                     <select id="player-position">
                       <option value="GK">GK</option>
-                      <option value="CBL">CB</option>
-                      <option value="CBR">CB</option>
+                      <option value="CBL">CBL</option>
+                      <option value="CBR">CBR</option>
                       <option value="LB">LB</option>
                       <option value="RB">RB</option>
                       <option value="CMM">CMM</option>
@@ -74,42 +74,37 @@
                </div>
                 
                
-              <div class="info-player">
+              <div class="info-player " id="informationskills">
+               
                 <div class="form-row">
-                  <label for="rating">Rating</label>
-                  <input type="number" id="rating">
-                </div>
-                
-                <div class="form-row">
-                  <label for="Pace">Pace</label>
-                  <input type="number" id="Pace">
-                </div>
-              
-                <div class="form-row">
-                  <label for="Shooting">Shooting</label>
-                  <input type="number" id="Shooting">
-                </div>
-              
-                <div class="form-row">
-                  <label for="Passing">Passing</label>
-                  <input type="number" id="Passing">
-                </div>
-              
-                <div class="form-row">
-                  <label for="Dribbling">Dribbling</label>
-                  <input type="number" id="Dribbling">
-                </div>
-              
-                <div class="form-row">
-                  <label for="Defending">Defending</label>
-                  <input type="number" id="Defending">
-                </div>
-              
-                <div class="form-row">
-                  <label for="Physical">Physical</label>
-                  <input type="number" id="Physical">
-                </div>
-                <button type="submit" id="clickadd"><span>+</span> <h3>Add</h3></button>
+            <label for="rating">Rating</label>
+            <input type="number" id="rating">
+        </div>
+        <div class="form-row">
+            <label for="Diving">Diving</label>
+            <input type="number" id="Diving">
+        </div>
+        <div class="form-row">
+            <label for="Handling">Handling</label>
+            <input type="number" id="Handling">
+        </div>
+        <div class="form-row">
+            <label for="Kicking">Kicking</label>
+            <input type="number" id="Kicking">
+        </div>
+        <div class="form-row">
+            <label for="Reflexes">Reflexes</label>
+            <input type="number" id="Reflexes">
+        </div>
+        <div class="form-row">
+            <label for="Speed">Speed</label>
+            <input type="number" id="Speed">
+        </div>
+        <div class="form-row">
+            <label for="Positioning">Positioning</label>
+            <input type="number" id="Positioning">
+        </div>
+        <button type="submit" id="clickadd"><span>+</span> <h3>Add</h3></button>
 
               </div>
                 </div>
@@ -150,9 +145,6 @@
 
     <div class="formedit modal" style="visibility: hidden;">
       <form class="player-form formplayer">
-          <button class="close-button" onclick="closeModal()">
-              <i class="fa fa-times"></i>
-          </button>
           <div class="titleinfo">
               <h3>Edit Player</h3>
           </div>
@@ -166,7 +158,8 @@
                   <label for="player-position">Position</label>
                   <select id="player-positionedit">
                       <option value="GK">GK</option>
-                      <option value="CB">CB</option>
+                      <option value="CBL">CBL</option>
+                      <option value="CBR">CBR</option>
                       <option value="LB">LB</option>
                       <option value="RB">RB</option>
                       <option value="CMM">CMM</option>
