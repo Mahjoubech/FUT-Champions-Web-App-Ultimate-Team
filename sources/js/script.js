@@ -101,10 +101,15 @@ addplayer.addEventListener('click',(e)=>{
           
 
           dataplayers.push(newplayer);
+          console.log("array"+dataplayers);
+
           localStorage.setItem('succer', JSON.stringify(dataplayers));
+
+          console.log("local"+localStorage.getItem("succer"));
+
           createToast('Success', 'fa-solid fa-circle-exclamation', 'success', 'Player added successfully!');
           showplayers();
-          
+
           nameplayert.value = "";
           posplayert.value = "";
           ratingplt.value = "";
@@ -160,6 +165,7 @@ function showplayers() {
                       <p>PIV</p>
                       <span>${data.diving}</span>
                   </div>
+
                   <div>
                       <p>HAN</p>
                       <span>${data.handling}</span>
@@ -188,7 +194,7 @@ function showplayers() {
               <button class="delete-btn">
                  <i class="fa-solid fa-xmark"></i>
               </button>
-               <button class="edit-btn">
+               <button class="edit-btn" onclick="editPlayer(${index})">
               <i class="fa-solid fa-pen-to-square"></i>              </button>
                  </div>
           </div>`;
@@ -239,7 +245,7 @@ function showplayers() {
               <button class="delete-btn"  onclick = "delet(${index})">
                  <i class="fa-solid fa-xmark"></i>
               </button>
-               <button class="edit-btn">
+               <button class="edit-btn" onclick="editPlayer(${index})">
               <i class="fa-solid fa-pen-to-square"></i>              </button>
                  </div>
               </div>`;
@@ -275,11 +281,11 @@ function selectplayer() {
 function ChangerPlayer(data) {
 console.log(data.position);
 
-
-    const selectedDiv = document.getElementById(data.position);
-
+       
+    let selectedDiv = document.getElementById(data.position);
+      
     if (selectedDiv) {
-        // Générer le contenu HTML pour le joueur sélectionné
+        data.position.innerHTML = ""
         if(data.position === 'GK'){
             let content =` <div class="positions" id="${data.name}" onclick='ChangerPlayer(${JSON.stringify(data)})'>
             <div class="head-card">
@@ -372,9 +378,10 @@ console.log(data.position);
     }
 }
 
-
+let staduims = document.getElementById('containr')
 console.log(selectplayer());
 function showselected(){
+    staduims.textContent = ""
     let team = selectplayer()
     for(let pos in team){
         team[pos].forEach(player=>{
@@ -419,7 +426,7 @@ function showselected(){
               </div>
           </div>
           </div>`;
-          staduim.innerHTML += content
+          staduims.innerHTML += content
         }else{
             content = `<div class="positions ${pos}"  id="${player.position}">
                 <div class="head-card">
@@ -461,7 +468,7 @@ function showselected(){
                   </div>
               </div>
               </div>`;
-               staduim.innerHTML += content
+               staduims.innerHTML += content
         }   
         });
         
@@ -493,9 +500,48 @@ let notifications = document.querySelector('.notifications');
         dataplayers.splice(i, 1); 
         localStorage.succer = JSON.stringify(dataplayers);
         showplayers();
-        createToast('Success', 'fa-solid fa-circle-exclamation', 'success', 'rah tm7a had zeb');
+
+        createToast('Success', 'fa-solid fa-circle-exclamation', 'success', 'Player Delet successfully!');
     }
-   
+//    // edit player
+function editPlayer(index) {
+    let player = dataplayers[index];
+    document.getElementById('player-nameedit').value = player.name;
+    document.getElementById('player-positionedit').value = player.position;
+    document.getElementById('ratingedit').value = player.rating;
+    document.getElementById('Paceedit').value = player.pace;
+    document.getElementById('Shootingedit').value = player.shooting;
+    document.getElementById('Passingedit').value = player.passing;
+    document.getElementById('Dribblingedit').value = player.dribbling;
+    document.getElementById('Defendingedit').value = player.defending;
+    document.getElementById('Physicaledit').value = player.physical;
+    document.getElementById('photo-linkedit').value = player.photo || '';
+    document.querySelector('.modal').style.visibility = 'visible';
+    document.querySelector('.formplayer').onsubmit = (e) => {
+    e.preventDefault(); 
+      player.name = document.getElementById('player-nameedit').value;
+      player.position = document.getElementById('player-positionedit').value;
+      player.rating = parseInt(document.getElementById('ratingedit').value);
+      player.pace = parseInt(document.getElementById('Paceedit').value);
+      player.shooting = parseInt(document.getElementById('Shootingedit').value);
+      player.passing = parseInt(document.getElementById('Passingedit').value);
+      player.dribbling = parseInt(document.getElementById('Dribblingedit').value);
+      player.defending = parseInt(document.getElementById('Defendingedit').value);
+      player.physical = parseInt(document.getElementById('Physicaledit').value);
+      player.photo = document.getElementById('photo-linkedit').value;
+
+      localStorage.setItem('succer', JSON.stringify(dataplayers));
+  
+      showplayers();
+      createToast('Success', 'fa-solid fa-circle-check', 'Player updated successfully!');
+    };
+  }
+
+  function closeModal() {
+    document.querySelector('.modal').style.display = 'none';
+  }
+  
 
 // Appel des fonctions
-window.onload = showplayers()
+ showplayers()
+ 
