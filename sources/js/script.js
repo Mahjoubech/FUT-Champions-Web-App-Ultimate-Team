@@ -25,16 +25,7 @@ function showpage(hideId,pageId) {
 
 showpage('add-player','page-add-player');
 
-//for display statistic 
-posplayert.addEventListener("change", function () {
-    if (posplayert.value === 'GK') {
-        console.log(posplayert.value);
-        
-        displayGKForm();
-    } else {
-        displayPlayerForm();
-    }
-})
+
 
 
 let player;
@@ -52,11 +43,21 @@ let dribblingplt = document.getElementById('Dribbling')
 let physiqplt = document.getElementById('Physical')
 let defendingIt = document.getElementById('Defending')
 
+//for display statistic 
+posplayert.addEventListener("change", function () {
+    if (posplayert.value === 'GK') {
+        console.log(posplayert.value); 
+        displayGKForm();
+    } else {
+        displayPlayerForm();
+    }
+})
+displayGKForm();
 //ajout player
 
 addPlayer(document.querySelector('#clickadd'), document.querySelector('#clickadd').parentElement)
 
-function addPlayer() {
+function addPlayer(button, element) {
     button.addEventListener('click',(e)=>{
         
         e.preventDefault();
@@ -82,7 +83,7 @@ function addPlayer() {
 
             return;
         }
-        let playerStats = [ratingplt, paceplt];
+        let playerStats = [inputs[1], inputs[2], inputs[3], inputs[4], inputs[5], inputs[6]];
         playerStats.forEach((stat, index) => {
             console.log(index);
             if (!ratingRegex.test(stat.value)) {
@@ -114,7 +115,7 @@ function addPlayer() {
                     logo: "https://cdn.sofifa.net/meta/team/239235/120.png",  
                     rating: parseInt(inputs[0].value),  
                     pace: parseInt(inputs[1].value),  
-                    shooting: +(inputs[2].value),  
+                    shooting: parseInt(inputs[2].value),  
                     passing: parseInt(inputs[3].value),  
                     dribbling: parseInt(inputs[4].value),  
                     defending:parseInt(inputs[5].value),  
@@ -131,7 +132,7 @@ function addPlayer() {
                     logo: "https://cdn.sofifa.net/meta/team/239235/120.png",  
                     rating: parseInt(inputs[0].value),  
                     diving: parseInt(inputs[1].value),  
-                    handling: +(inputs[2].value),  
+                    handling: parseInt(inputs[2].value),  
                     kicking: parseInt(inputs[3].value),  
                     reflexes: parseInt(inputs[4].value),  
                     speed:parseInt(inputs[5].value),  
@@ -174,6 +175,7 @@ function addPlayer() {
 
 //function display form
 function displayGKForm() {
+    let element = document.getElementById('informationskills');
     element.innerHTML = `
         <div class="form-row">
             <label for="rating">Rating</label>
@@ -204,11 +206,11 @@ function displayGKForm() {
             <input type="number" id="Positioning">
         </div>
         <button type="submit" id="clickadd"><span>+</span> <h3>Add</h3></button>`;
-      
+        addPlayer(element.querySelector('button'), element);
     }
 
 function displayPlayerForm() {
-   
+    let element = document.getElementById('informationskills');
     element.innerHTML = `
                 <div class="form-row">
                     <label for="rating">Rating</label>
@@ -240,8 +242,10 @@ function displayPlayerForm() {
                 </div>
                 <button type="submit" id="clickadd"><span>+</span> <h3>Add</h3></button>
               `;
-             
+              addPlayer(element.querySelector('button'), element);
 }
+
+let attr = '';
 fetch("sources/api/players.json")
 .then(res => res.json())
 .then(res => {
@@ -249,12 +253,29 @@ fetch("sources/api/players.json")
     localStorage.setItem('succer', JSON.stringify(player));
     console.log('Données sauvegardées dans localStorage');
     showplayers();
-    showselected() 
+    showselected() ;
+    // let positions = document.querySelectorAll('#containr .positions');
+    // positions.forEach(function (item) {
+    //     item.innerHTML = "<button class='plus-btn'>+</button>";
+    //     item.addEventListener('click', () => {
+    //         showpage('players','page-players')
+    //         attr = item.id;
+    //         let positions = document.querySelectorAll('.gridcards .prancipal');
+    //         for (let i = 0; i < positions.length; i++) {
+    //             if (positions[i].querySelector('.position span').textContent == attr) {
+    //                 positions[i].style.display = "flex"
+    //             } else {
+    //                 positions[i].style.display = "none"
+    //             }
+    //         }
+    //     });
+    // })
 })
+
 let container = document.getElementById('contentPlayers')
 let staduim = document.querySelector('.container')
 function showplayers() {
-    container.innerHTML = ""
+      container.innerHTML = ""
     dataplayers.forEach((data,index) => {
         if(data.position === 'GK'){
             let content =`<div class = "prancipal">
@@ -586,6 +607,7 @@ function showselected(){
         
     }
 }
+
 //Notification.
 
 let notifications = document.querySelector('.notifications');
@@ -612,6 +634,7 @@ let notifications = document.querySelector('.notifications');
         dataplayers.splice(i, 1); 
         localStorage.succer = JSON.stringify(dataplayers);
         showplayers();
+        showselected()
         createToast('Success', 'fa-solid fa-circle-exclamation', 'success', 'Player Delet successfully!');
     }
 //    // edit player
@@ -645,7 +668,7 @@ function editPlayer(index) {
       
       localStorage.setItem('succer', JSON.stringify(dataplayers));
       createToast('Success', 'fa-solid fa-circle-check', 'success', 'Player updated successfully!');
-    //   showselected()
+       showselected()
      
     };
   }
