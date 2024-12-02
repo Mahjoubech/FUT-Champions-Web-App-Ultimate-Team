@@ -25,7 +25,16 @@ function showpage(hideId,pageId) {
 
 showpage('add-player','page-add-player');
 
-
+//for display statistic 
+posplayert.addEventListener("change", function () {
+    if (posplayert.value === 'GK') {
+        console.log(posplayert.value);
+        
+        displayGKForm();
+    } else {
+        displayPlayerForm();
+    }
+})
 
 
 let player;
