@@ -321,12 +321,12 @@ function showplayers() {
           </div>
          
           </div>
-           <div class="edit-delet" onclick = "delet(${index})">
+           <div class="edit-delet" onclick = "delet(${index}, ${data.position})">
               <button class="delete-btn">
                  <i class="fa-solid fa-xmark"></i>
               </button>
               
-               <button class="edit-btn" onclick="editPlayer(${index})">
+               <button class="edit-btn" onclick="editPlayer(${index}, ${data.position})">
               <i class="fa-solid fa-pen-to-square"></i>
                </button>
                  </div>
@@ -375,10 +375,10 @@ function showplayers() {
               </div>
               </div>
               <div class="edit-delet">
-              <button class="delete-btn"  onclick = "delet(${index})">
+              <button class="delete-btn"  onclick = "delet(${index}, ${data.position})">
                  <i class="fa-solid fa-xmark"></i>
               </button>
-               <button class="edit-btn" onclick="editPlayer(${index})">
+               <button class="edit-btn" onclick="editPlayer(${index}, ${data.position})">
               <i class="fa-solid fa-pen-to-square"></i>              </button>
                  </div>
               </div>`;
@@ -630,11 +630,13 @@ let notifications = document.querySelector('.notifications');
     }
 
     //delet player
-    function delet(i){
+    function delet(i, pos){
         dataplayers.splice(i, 1); 
         localStorage.succer = JSON.stringify(dataplayers);
         showplayers();
-        showselected()
+        console.log(pos);
+        pos.innerHTML = "<button class='plus-btn'>+</button>";
+
         createToast('Success', 'fa-solid fa-circle-exclamation', 'success', 'Player Delet successfully!');
     }
 //    // edit player
