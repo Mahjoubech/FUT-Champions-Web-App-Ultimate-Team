@@ -256,6 +256,7 @@ fetch("sources/api/players.json")
     showselected() ;
     let positions = document.querySelectorAll('#containr .positions');
     positions.forEach(function (item) {
+        item.innerHTML = "<button class='plus-btn'>+</button>";
         item.addEventListener('click', () => {
             showpage('players','page-players')
             attr = item.id;

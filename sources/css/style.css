@@ -1036,3 +1036,10 @@ width: 0;
   background-color: rgba(255, 107, 0, 0.1);
   transition: all 0.3s ease;
 }
+
+/*button cards*/
+.plus-btn {
+  font-size: 30px;
+  border: none;
+  background-color: transparent;
+}
