@@ -254,22 +254,21 @@ fetch("sources/api/players.json")
     console.log('Données sauvegardées dans localStorage');
     showplayers();
     showselected() ;
-    // let positions = document.querySelectorAll('#containr .positions');
-    // positions.forEach(function (item) {
-    //     item.innerHTML = "<button class='plus-btn'>+</button>";
-    //     item.addEventListener('click', () => {
-    //         showpage('players','page-players')
-    //         attr = item.id;
-    //         let positions = document.querySelectorAll('.gridcards .prancipal');
-    //         for (let i = 0; i < positions.length; i++) {
-    //             if (positions[i].querySelector('.position span').textContent == attr) {
-    //                 positions[i].style.display = "flex"
-    //             } else {
-    //                 positions[i].style.display = "none"
-    //             }
-    //         }
-    //     });
-    // })
+    let positions = document.querySelectorAll('#containr .positions');
+    positions.forEach(function (item) {
+        item.addEventListener('click', () => {
+            showpage('players','page-players')
+            attr = item.id;
+            let positions = document.querySelectorAll('.gridcards .prancipal');
+            for (let i = 0; i < positions.length; i++) {
+                if (positions[i].querySelector('.position span').textContent == attr) {
+                    positions[i].style.display = "flex"
+                } else {
+                    positions[i].style.display = "none"
+                }
+            }
+        });
+    })
 })
 
 let container = document.getElementById('contentPlayers')
