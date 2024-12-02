@@ -11,6 +11,7 @@ document.getElementById('players').addEventListener('click', () => {
     document.getElementById('add-player').classList.remove('active')
     document.getElementById('formations').classList.remove('active')
     showpage('players','page-players')});
+
 function showpage(hideId,pageId) {
     document.querySelectorAll('.filtbtn').forEach(button => {
         button.classList.remove('active');
@@ -43,103 +44,128 @@ let physiqplt = document.getElementById('Physical')
 let defendingIt = document.getElementById('Defending')
 
 //ajout player
-addplayer.addEventListener('click',(e)=>{
- e.preventDefault();
-      //  validation inputs values
-      let nameRegex = /^[a-zA-Z\s]{1,15}$/; 
-      let ratingRegex = /^([1-9][0-9]?|100)$/; 
-      let positionRegex = /^[a-zA-Z\s]+$/; 
-      if (!nameRegex.test(nameplayert.value)) {
-          createToast('warning', 'fa-solid fa-triangle-exclamation', 'Warning', 'Invalid player name! Please enter only letters and spaces.');
 
-          return;
-      }
-      if (!ratingRegex.test(ratingplt.value)) {
-          createToast('warning', 'fa-solid fa-triangle-exclamation', 'Warning', 'Invalid rating! Please enter a number between 1 and 100.');
+addPlayer(document.querySelector('#clickadd'), document.querySelector('#clickadd').parentElement)
 
-          return;
-      }
-      if (!positionRegex.test(posplayert.value)) {
-          createToast('warning', 'fa-solid fa-triangle-exclamation', 'Warning', 'Invalid position! Please enter a number between 1 and 100.');
+function addPlayer() {
+    button.addEventListener('click',(e)=>{
+        
+        e.preventDefault();
 
-          return;
-      }
-      let playerStats = [paceplt, shootingplt, passingplt, dribblingplt, physiqplt];
-    playerStats.forEach(stat => {
-        if (!ratingRegex.test(stat.value)) {
-            createToast('warning', 'fa-solid fa-triangle-exclamation', 'Warning', `Invalid ${stat.name}! Please enter a number between 1 and 100.`);
+        let inputs = element.querySelectorAll('input');
+
+        //  validation inputs values
+        let nameRegex = /^[a-zA-Z\s]{1,15}$/; 
+        let ratingRegex = /^[1-99]{1,2}$/;
+        let positionRegex = /^[a-zA-Z\s]+$/; 
+        if (!nameRegex.test(nameplayert.value)) {
+            createToast('warning', 'fa-solid fa-triangle-exclamation', 'Warning', 'Invalid player name! Please enter only letters and spaces.');
+
             return;
         }
-    });
+        if (!ratingRegex.test(inputs[0].value)) {
+            createToast('warning', 'fa-solid fa-triangle-exclamation', 'Warning', 'Invalid rating! Please enter a number between 1 and 100.');
 
-      let file = photoplayert.files[0];
-      if (!file) {
-          createToast('warning', 'fa-solid fa-triangle-exclamation', 'Warning', 'Please add a photo of the player.');
-          return;
-      }
-      if (posplayert.value === 'GK') {
-        console.log(posplayert.value);
+            return;
+        }
+        if (!positionRegex.test(posplayert.value)) {
+            createToast('warning', 'fa-solid fa-triangle-exclamation', 'Warning', 'Invalid position! Please enter a number between 1 and 100.');
+
+            return;
+        }
+        let playerStats = [ratingplt, paceplt];
+        playerStats.forEach((stat, index) => {
+            console.log(index);
+            if (!ratingRegex.test(stat.value)) {
+                createToast('warning', 'fa-solid fa-triangle-exclamation', 'Warning', `Invalid ${stat.name}! Please enter a number between 1 and 100.`);
+                return;
+            }
+        });
+
+        let file = photoplayert.files[0];
+        if (!file) {
+            createToast('warning', 'fa-solid fa-triangle-exclamation', 'Warning', 'Please add a photo of the player.');
+            return;
+        }
         
-        displayGKForm();
-    } else {
-        displayPlayerForm();
-    }
-  if (file) {
-      let reader = new FileReader();
-  
-      reader.onload = function (event) {
-        let newplayer = {
-            name: nameplayert.value,  
-            photo: event.target.result,  
-            position: posplayert.value,  
-            nationality: "Argentina", 
-            flag: "https://cdn.sofifa.net/flags/ar.png",  
-            club: "Inter Miami",
-            logo: "https://cdn.sofifa.net/meta/team/239235/120.png",  
-            rating: parseInt(ratingplt.value),  
-            pace: parseInt(paceplt.value),  
-            shooting: parseInt(shootingplt.value),  
-            passing: parseInt(passingplt.value),  
-            dribbling: parseInt(dribblingplt.value),  
-            defending:parseInt(defendingIt.value),  
-            physical: parseInt(physiqplt.value),  
+        
+    if (file) {
+        let reader = new FileReader();
+    
+        reader.onload = function (event) {
+            let newplayer;
+            if (posplayert.value != "GK") {
+                newplayer = {
+                    name: nameplayert.value,  
+                    photo: event.target.result,  
+                    position: posplayert.value,  
+                    nationality: "Argentina", 
+                    flag: "https://cdn.sofifa.net/flags/ar.png",  
+                    club: "Inter Miami",
+                    logo: "https://cdn.sofifa.net/meta/team/239235/120.png",  
+                    rating: parseInt(inputs[0].value),  
+                    pace: parseInt(inputs[1].value),  
+                    shooting: +(inputs[2].value),  
+                    passing: parseInt(inputs[3].value),  
+                    dribbling: parseInt(inputs[4].value),  
+                    defending:parseInt(inputs[5].value),  
+                    physical: parseInt(inputs[6].value),  
+                };
+            } else {
+                newplayer = {
+                    name: nameplayert.value,  
+                    photo: event.target.result,  
+                    position: posplayert.value,  
+                    nationality: "Argentina", 
+                    flag: "https://cdn.sofifa.net/flags/ar.png",  
+                    club: "Inter Miami",
+                    logo: "https://cdn.sofifa.net/meta/team/239235/120.png",  
+                    rating: parseInt(inputs[0].value),  
+                    diving: parseInt(inputs[1].value),  
+                    handling: +(inputs[2].value),  
+                    kicking: parseInt(inputs[3].value),  
+                    reflexes: parseInt(inputs[4].value),  
+                    speed:parseInt(inputs[5].value),  
+                    positioning: parseInt(inputs[6].value),  
+                };
+            }
+            
+
+            dataplayers.push(newplayer);
+            console.log("array"+dataplayers);
+
+            localStorage.setItem('succer', JSON.stringify(dataplayers));
+
+            console.log("local"+localStorage.getItem("succer"));
+
+            createToast('Success', 'fa-solid fa-circle-exclamation', 'success', 'Player added successfully!');
+            showplayers();
+
+            nameplayert.value = "";
+            posplayert.value = "";
+            inputs[0].value = "";
+            photoplayert.value = "";
+            inputs[1].value = "";
+            inputs[2].value = "";
+            inputs[3].value = "";
+            inputs[4].value = "";
+            inputs[5].value = "";
+            inputs[6].value = "";
+            
         };
-          console.log(newplayer);
-          
 
-          dataplayers.push(newplayer);
-          console.log("array"+dataplayers);
+        reader.readAsDataURL(file); 
+    
+    } else {
+        createToast('warning', 'fa-solid fa-triangle-exclamation', 'Warning', 'please add photo the player');
 
-          localStorage.setItem('succer', JSON.stringify(dataplayers));
-
-          console.log("local"+localStorage.getItem("succer"));
-
-          createToast('Success', 'fa-solid fa-circle-exclamation', 'success', 'Player added successfully!');
-          showplayers();
-
-          nameplayert.value = "";
-          posplayert.value = "";
-          ratingplt.value = "";
-          photoplayert.value = "";
-          paceplt.value = "";
-          shootingplt.value = "";
-          passingplt.value = "";
-          dribblingplt.value = "";
-          physiqplt.value = "";
-         
-      };
-
-      reader.readAsDataURL(file); 
-   
-  } else {
-      createToast('warning', 'fa-solid fa-triangle-exclamation', 'Warning', 'please add photo the player');
-
-  }
-})
+    }
+    })
+}
 
 //function display form
 function displayGKForm() {
-    document.getElementById('informationskills').innerHTML = `
+    element.innerHTML = `
         <div class="form-row">
             <label for="rating">Rating</label>
             <input type="number" id="rating">
@@ -169,41 +195,44 @@ function displayGKForm() {
             <input type="number" id="Positioning">
         </div>
         <button type="submit" id="clickadd"><span>+</span> <h3>Add</h3></button>`;
-}
+      
+    }
 
 function displayPlayerForm() {
-    document.getElementById('informationskills').innerHTML = `
-        <div class="form-row">
-            <label for="rating">Rating</label>
-            <input type="number" id="rating">
-        </div>
-        <div class="form-row">
-            <label for="Pace">Pace</label>
-            <input type="number" id="Pace">
-        </div>
-        <div class="form-row">
-            <label for="Shooting">Shooting</label>
-            <input type="number" id="Shooting">
-        </div>
-        <div class="form-row">
-            <label for="Passing">Passing</label>
-            <input type="number" id="Passing">
-        </div>
-        <div class="form-row">
-            <label for="Dribbling">Dribbling</label>
-            <input type="number" id="Dribbling">
-        </div>
-        <div class="form-row">
-            <label for="Defending">Defending</label>
-            <input type="number" id="Defending">
-        </div>
-        <div class="form-row">
-            <label for="Physical">Physical</label>
-            <input type="number" id="Physical">
-        </div>
-        <button type="submit" id="clickadd"><span>+</span> <h3>Add</h3></button>`;
+   
+    element.innerHTML = `
+                <div class="form-row">
+                    <label for="rating">Rating</label>
+                    <input type="number" id="rating">
+                </div>
+                <div class="form-row">
+                    <label for="Pace">Pace</label>
+                    <input type="number" id="Pace">
+                </div>
+                <div class="form-row">
+                    <label for="Shooting">Shooting</label>
+                    <input type="number" id="Shooting">
+                </div>
+                <div class="form-row">
+                    <label for="Passing">Passing</label>
+                    <input type="number" id="Passing">
+                </div>
+                <div class="form-row">
+                    <label for="Dribbling">Dribbling</label>
+                    <input type="number" id="Dribbling">
+                </div>
+                <div class="form-row">
+                    <label for="Defending">Defending</label>
+                    <input type="number" id="Defending">
+                </div>
+                <div class="form-row">
+                    <label for="Physical">Physical</label>
+                    <input type="number" id="Physical">
+                </div>
+                <button type="submit" id="clickadd"><span>+</span> <h3>Add</h3></button>
+              `;
+             
 }
-
 fetch("sources/api/players.json")
 .then(res => res.json())
 .then(res => {
@@ -211,7 +240,7 @@ fetch("sources/api/players.json")
     localStorage.setItem('succer', JSON.stringify(player));
     console.log('Données sauvegardées dans localStorage');
     showplayers();
-    showselected()
+    showselected() 
 })
 let container = document.getElementById('contentPlayers')
 let staduim = document.querySelector('.container')
@@ -574,8 +603,6 @@ let notifications = document.querySelector('.notifications');
         dataplayers.splice(i, 1); 
         localStorage.succer = JSON.stringify(dataplayers);
         showplayers();
-        showselected()
-
         createToast('Success', 'fa-solid fa-circle-exclamation', 'success', 'Player Delet successfully!');
     }
 //    // edit player
@@ -609,8 +636,7 @@ function editPlayer(index) {
       
       localStorage.setItem('succer', JSON.stringify(dataplayers));
       createToast('Success', 'fa-solid fa-circle-check', 'success', 'Player updated successfully!');
-      showplayers();
-      showselected()
+    //   showselected()
      
     };
   }

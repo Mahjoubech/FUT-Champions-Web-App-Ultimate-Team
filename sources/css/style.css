@@ -649,7 +649,7 @@ left : 31%
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url('/image/badge_gold.webp');
+    background-image: url('image/badge_gold.webp');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
