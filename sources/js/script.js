@@ -334,8 +334,8 @@ function showplayers() {
           </div>
          
           </div>
-           <div class="edit-delet" onclick = "delet(${index}, ${data.position})">
-              <button class="delete-btn">
+           <div class="edit-delet">
+              <button class="delete-btn" onclick = "delet(${index}, ${data.position})">
                  <i class="fa-solid fa-xmark"></i>
               </button>
               
@@ -522,6 +522,8 @@ console.log(data.position);
     } else {
         console.log("Aucune div trouvée pour cette position.");
     }
+
+    showplayers();
 }
 
 let staduims = document.getElementById('containr')
@@ -655,6 +657,8 @@ let notifications = document.querySelector('.notifications');
 //    // edit player
 function editPlayer(index) {
     let player = dataplayers[index];
+    let prevPosition = player.position; 
+
     document.getElementById('player-nameedit').value = player.name;
     document.getElementById('player-positionedit').value = player.position;
     document.getElementById('ratingedit').value = player.rating;
@@ -668,7 +672,7 @@ function editPlayer(index) {
     document.querySelector('.modal').style.visibility = 'visible';
 
     document.querySelector('.formplayer').onsubmit = (e) => {
-    e.preventDefault(); 
+        e.preventDefault(); 
       player.name = document.getElementById('player-nameedit').value;
       player.position = document.getElementById('player-positionedit').value;
       player.rating = parseInt(document.getElementById('ratingedit').value);
@@ -680,10 +684,20 @@ function editPlayer(index) {
       player.physical = parseInt(document.getElementById('Physicaledit').value);
       player.photo = document.getElementById('photo-linkedit').value;
        document.querySelector('.modal').style.visibility = 'hidden';
-      
-      localStorage.setItem('succer', JSON.stringify(dataplayers));
+
+       let ctr = document.querySelector('#containr');
+       let prevPlayerCard = ctr.querySelector(`#${prevPosition}`);
+       let newPlayerCard = ctr.querySelector(`#${player.position}`);
+
+       prevPlayerCard.querySelector(`.position span`).textContent = player.position;
+       newPlayerCard.textContent = "";
+       newPlayerCard.appendChild(prevPlayerCard.firstElementChild);
+       prevPlayerCard.innerHTML = `<button class="plus-btn">+</button>`;
+
+       localStorage.setItem('succer', JSON.stringify(dataplayers));
       createToast('Success', 'fa-solid fa-circle-check', 'success', 'Player updated successfully!');
-       showselected()
+      showplayers();
+    //    showselected()
      
     };
   }
