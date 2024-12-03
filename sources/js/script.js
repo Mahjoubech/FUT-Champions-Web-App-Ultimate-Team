@@ -12,15 +12,16 @@ document.getElementById('players').addEventListener('click', () => {
     document.getElementById('formations').classList.remove('active')
     showpage('players','page-players')});
 //icons for tablte and phone
-document.getElementById('add-playericon').addEventListener('click', () =>{
+document.getElementById("add-playericon").addEventListener('click', () =>{
     document.getElementById('formationsicon').classList.remove('active')
     document.getElementById('playersicon').classList.remove('active')
-    showpage('add-playericon','page-add-player')} );
+    showpage('add-playericon','page-add-player')
+});
 document.getElementById('formationsicon').addEventListener('click', () => {
     document.getElementById('add-playericon').classList.remove('active')
     document.getElementById('playersicon').classList.remove('active')
     showpage('formationsicon','page-formations')});
-document.getElementById('players').addEventListener('click', () => {
+document.getElementById('playersicon').addEventListener('click', () => {
     document.getElementById('add-playericon').classList.remove('active')
     document.getElementById('formationsicon').classList.remove('active')
     showpage('playersicon','page-players')});
@@ -270,6 +271,7 @@ fetch("sources/api/players.json")
     positions.forEach(function (item) {
         item.innerHTML = "<button class='plus-btn'>+</button>";
         item.addEventListener('click', () => {
+            item.classList.add('selected-card');
             showpage('playersicon','page-players');
             showpage('players','page-players')
             attr = item.id;
@@ -284,6 +286,12 @@ fetch("sources/api/players.json")
         });
     })
 })
+
+function resetStyle() {
+    document.querySelectorAll('#containr .positions').forEach(item => {
+        item.classList.remove('selected-card');
+    })
+}
 
 let container = document.getElementById('contentPlayers')
 let staduim = document.querySelector('.container')
@@ -426,7 +434,7 @@ function selectplayer() {
 
 function ChangerPlayer(data) {
 console.log(data.position);
-
+resetStyle();
        
     let selectedDiv = document.getElementById(data.position);
       

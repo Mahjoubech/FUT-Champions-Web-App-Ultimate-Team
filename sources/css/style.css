@@ -584,6 +584,8 @@ left : 31%
   display: none;
   justify-content: space-between;
  padding: 4px;
+ position: relative;
+ z-index: 900;
 }
 
 .navbar ul {
@@ -706,6 +708,9 @@ left : 31%
       );
 }
 
+.selected-card {
+  filter: drop-shadow(0px 0px 15px orangered);
+}
 
 /*format edit */
 .formedit .formplayer {
