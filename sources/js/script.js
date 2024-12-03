@@ -11,7 +11,19 @@ document.getElementById('players').addEventListener('click', () => {
     document.getElementById('add-player').classList.remove('active')
     document.getElementById('formations').classList.remove('active')
     showpage('players','page-players')});
-
+//icons for tablte and phone
+document.getElementById('add-playericon').addEventListener('click', () =>{
+    document.getElementById('formationsicon').classList.remove('active')
+    document.getElementById('playersicon').classList.remove('active')
+    showpage('add-playericon','page-add-player')} );
+document.getElementById('formationsicon').addEventListener('click', () => {
+    document.getElementById('add-playericon').classList.remove('active')
+    document.getElementById('playersicon').classList.remove('active')
+    showpage('formationsicon','page-formations')});
+document.getElementById('players').addEventListener('click', () => {
+    document.getElementById('add-playericon').classList.remove('active')
+    document.getElementById('formationsicon').classList.remove('active')
+    showpage('playersicon','page-players')});
 function showpage(hideId,pageId) {
     document.querySelectorAll('.filtbtn').forEach(button => {
         button.classList.remove('active');
@@ -23,9 +35,9 @@ function showpage(hideId,pageId) {
   document.getElementById(pageId).style.display = 'block';
 }
 
+
+showpage('add-playericon','page-add-player');
 showpage('add-player','page-add-player');
-
-
 
 
 let player;
