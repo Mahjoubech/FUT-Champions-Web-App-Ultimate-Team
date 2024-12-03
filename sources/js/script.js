@@ -270,6 +270,7 @@ fetch("sources/api/players.json")
     positions.forEach(function (item) {
         item.innerHTML = "<button class='plus-btn'>+</button>";
         item.addEventListener('click', () => {
+            showpage('playersicon','page-players');
             showpage('players','page-players')
             attr = item.id;
             let positions = document.querySelectorAll('.gridcards .prancipal');
