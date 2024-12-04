@@ -54,7 +54,7 @@ Concevoir une application web de gestion d'équipe Ultimate Team pour EA FC 25, 
 Clonez le project
 
 ```bash
-  git clone https://github.com/anass17/Copie-de-FUT-Champions-Web-App-Ultimate-Team
+  git clone https://github.com/Mahjoubech/FUT-Champions-Web-App-Ultimate-Team.git
 ```
 
 Accéder au Dossier
