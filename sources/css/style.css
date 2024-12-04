@@ -1369,17 +1369,17 @@ margin:15px 0 0 25px;
    transform: scale(1.5); 
   }
 }
-@media (max-width: 610px) {
+@media (max-width: 480px) {
   body{
    flex-direction: column;
    align-items: center;
-   margin: -50px -37px;
-
+   margin: -45px -37px;
+   padding-bottom: 50px;
   }
   .page .head-card img {
     margin-top: 30px;
     width: 90%;
-    height: 17vh;
+    height: 12vh;
 }
 /* .page .positions{
   transform: scale(1.1);
@@ -1406,11 +1406,15 @@ margin:15px 0 0 25px;
     box-shadow: rgba(0, 0, 0, 0.7);
     cursor: pointer;
     transition: all 0.5s ease;
-    transform: scale(0.8);
+    transform: scale(0.5);
     
   }
   #containr{
+    margin-top: 20px;
     height: 100%;
+  }
+  #containr .st{
+    left: 50%;
   }
   .container .positions:hover{
     transform: rotateY(20deg) rotateX(15deg);
@@ -1518,7 +1522,8 @@ margin:15px 0 0 25px;
   .navbar ul {
     display: flex;
     text-align: center;
-   
+   margin-top: 80px;
+
   }
 
   .navbar li {
@@ -1543,3 +1548,4 @@ margin:15px 0 0 25px;
    transform: scale(1.5); 
   }
 }
+
