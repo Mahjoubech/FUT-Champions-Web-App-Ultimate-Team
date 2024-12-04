@@ -1373,17 +1373,20 @@ margin:15px 0 0 25px;
   body{
    flex-direction: column;
    align-items: center;
-   margin: 0;
-   padding: 0;
+   margin: -50px -37px;
+
   }
   .page .head-card img {
     margin-top: 30px;
     width: 90%;
-    height: 9vh;
+    height: 17vh;
 }
+/* .page .positions{
+  transform: scale(1.1);
+} */
   .container{
     margin-top: 20px;
-    transform: scale(0.35);
+    transform: scale(1.1);
   }
   
   .container .positions{
@@ -1403,7 +1406,7 @@ margin:15px 0 0 25px;
     box-shadow: rgba(0, 0, 0, 0.7);
     cursor: pointer;
     transition: all 0.5s ease;
-    transform: scale(0.6);
+    transform: scale(0.8);
     
   }
   #containr{
@@ -1494,8 +1497,13 @@ margin:15px 0 0 25px;
     margin-left: 10px;
     
   }
+  .titleinfo h3{
+       margin-top: -40px;
+      
+  }
   .info-player {
-    grid-template-columns: 1fr 14fr;
+    grid-template-columns: 1fr 1fr;
+    margin: -19px -106px 0 0;
 }
   .infoname {
     justify-content: space-around;
