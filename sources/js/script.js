@@ -735,7 +735,7 @@ function editPlayer(index) {
   document.getElementById("photo-linkedit").value = player.photo || "";
   document.querySelector(".modal").style.visibility = "visible";
 
-  document.querySelector(".formplayer").onsubmit = (e) => {
+  document.querySelector(".formedit").onsubmit = (e) => {
     e.preventDefault();
     player.name = document.getElementById("player-nameedit").value;
     player.position = document.getElementById("player-positionedit").value;
@@ -753,14 +753,19 @@ function editPlayer(index) {
     let prevPlayerCard = ctr.querySelector(`#${prevPosition}`);
     let newPlayerCard = ctr.querySelector(`#${player.position}`);
 
-    prevPlayerCard.querySelector(`.position span`).textContent =
-      player.position;
-    newPlayerCard.textContent = "";
-    newPlayerCard.appendChild(prevPlayerCard.firstElementChild);
-    prevPlayerCard.innerHTML = `<button class="plus-btn">+</button>`;
+    if (prevPlayerCard != null) {
+      prevPlayerCard.querySelector(`.position span`).textContent = player.position;
+      if (player.position != prevPosition) {
+        newPlayerCard.textContent = "";
+        newPlayerCard.appendChild(prevPlayerCard.firstElementChild);
+        prevPlayerCard.innerHTML = `<button class="plus-btn">+</button>`;
+      }
+    }
+
+    resetStyle();
 
     dataplayers.push(player);
-    localStorage.setItem("succer", JSON.stringify(dataplayers));
+   localStorage.setItem("succer", JSON.stringify(dataplayers));
     createToast(
       "Success",
       "fa-solid fa-circle-check",
@@ -776,7 +781,7 @@ function editPlayer(index) {
 showpage("add-playericon", "page-add-player");
 showpage("add-player", "page-add-player");
 
-addPlayer(document.querySelector("#clickadd"),document.querySelector("#clickadd").parentElement);
+// addPlayer(document.querySelector("#clickadd"),document.querySelector("#clickadd").parentElement);
 
 showplayers();
 
