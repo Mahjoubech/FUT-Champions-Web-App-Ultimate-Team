@@ -60,7 +60,7 @@ Clonez le project
 Accéder au Dossier
 
 ```bash
-  cd Copie-de-FUT-Champions-Web-App-Ultimate-Team
+  cd FUT-Champions-Web-App-Ultimate-Team
 ```
 
 ### DEMO 🔗
